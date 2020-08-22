@@ -1,0 +1,63 @@
+<div class="row" id="searchProfile">
+
+    <div class="col-md-5">
+        <div *ngIf="githubUser && githubUser.user && (githubUser.userName && githubUser.userName.length > 0)">
+
+            <div class="card">
+                <h4 class="card-header">{{githubUser.user.name}}</h4>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-xl-4 m-b-1">
+                            <img src="{{githubUser.user.avatar_url}}" class="profile-img img-thumbnail m-b-1" />
+                            <a class="btn btn-sm btn-outline-primary btn-block m-t-1" href="{{githubUser.user.html_url}}" target="_blank">View Profile</a>
+                        </div>
+
+                        <div class="col-xl-8">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <b>Username: </b> {{githubUser.user.login}}</li>
+                                <li class="list-group-item">
+                                    <b>Location: </b> {{githubUser.user.location}}</li>
+                                <li class="list-group-item">
+                                    <b>E-Mail: </b> {{githubUser.user.email}}</li>
+                                <li class="list-group-item">
+                                    <b>Blog Link: </b> {{githubUser.user.blog}}</li>
+                                <li class="list-group-item">
+                                    <b>Member Since: </b> {{githubUser.user.created_at}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info" style="background-color:#0f90f2; color:white">
+                        <span> {{githubUser.user.public_repos}} Public Repos </span>
+                        <span> {{githubUser.user.public_gists}} Public Gists </span>
+                        <span> {{githubUser.user.followers}} Followers </span>
+                        <span> {{githubUser.user.following}} Followings </span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div *ngIf="githubUser && githubUser.user && (githubUser.userName && githubUser.userName.length > 0)">
+            <div class="card">
+                <h5 class="card-header">Repos</h5>
+                <div class="card-block">
+
+                    <div class="list-group">
+                        <a *ngFor="let repo of githubUser.repos" href="{{repo.html_url}}" target="_blank" class="list-group-item list-group-item-action">
+                            <span class="tag tag-info pull-xs-right">{{repo.watchers}} Watchers</span>
+                            <span class="tag tag-success pull-xs-right m-r-05">{{repo.forks}} Forks</span>
+                            <h6 class="list-group-item-heading">{{repo.name}}</h6>
+                            <p class="list-group-item-text">{{repo.description}}</p>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
